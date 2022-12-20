@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evento</title>
+    <style>
+        button{
+            font: normal 18pt Arial;
+            background-color: orange;
+            height: 200px;
+            width: 200px;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+   
+    <center>
+         <h1> Eventos</h1>
+<label> Digite um texto: </label>
+<input type="text" id="texto">
+<br>
+        <button id="butao"> Botão </button>
+        <h1> Itens digitados: </h1>
+        <ul>
+            <li>
+                <p id="coisa"> </p>
+            </li>
+        </ul>
+        <h1> Itens salvos </h1>
+        <p id="itens"> </p>
+        <a href="index.html">
+            <button>Inicio</button> 
+        </a>
+    </center>
+
+    <script>
+        var botao = document.querySelector('#butao');
+        botao.addEventListener('click', clicar);
+        botao.addEventListener('mouseenter', entrar);
+        window.addEventListener("load", (event) => {
+                var texto = window.localStorage.getItem('textos');
+                var item = document.querySelector('#itens');
+                item.innerText = texto;
+            }
+            );
+            window.addEventListener("click", (event) => {
+                var texto = window.localStorage.getItem('textos');
+                var item = document.querySelector('#itens');
+                item.innerText = texto;
+            }
+            );
+
+        function clicar(){
+            let textos = [] = JSON.parse(localStorage.getItem('textos')) || [];
+            var coisa = document.querySelector('#coisa');
+            var texto = document.querySelector('#texto').value;
+            if(!texto) return alert("Digite")
+            var novoLi = document.createElement('li');
+            var novoP = document.createElement('p');
+            var text = document.createTextNode(texto);
+            var position = document.getElementsByTagName('ul')[0];
+            novoP.appendChild(text);
+            novoLi.appendChild(novoP); 
+            position.appendChild(novoLi);
+            botao.style.background = 'orange';
+            botao.style.color = 'black';
+            document.querySelector('#texto').value = "";
+            textos.push(texto);
+            localStorage.setItem('textos', JSON.stringify(textos));
+        }
+        function entrar(){
+            botao.style.background = 'black';
+            botao.style.color = 'white';
+           
+        }
+    </script>
+
+</body>
+</html>
