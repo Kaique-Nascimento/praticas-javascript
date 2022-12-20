@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript</title>
+    <style>
+        body{
+            background-color: rgba(57, 57, 203, 0.667);
+            color: white;
+            font: normal 18pt Arial;
+        }
+    </style>
+</head>
+<body>
+    <h1>Aoba</h1> 
+    <p> Teste </p>
+    
+    <label> Digite uma cor: [ENG/PT] </label>
+    <input type="text" id="color">
+    <input type="submit" id="enviado">
+
+    <script> 
+    let enviar = document.getElementById("enviado");
+    enviar.addEventListener("click", function() {
+
+    });
+
+    /*Pegar primeiro paragrafo [0] - 1º */
+    window.document.write("<br>"+window.navigator.appName);
+    window.document.write("<br> Está pagina está rodando em: "+window.document.URL);
+
+    enviar.addEventListener("click", () => {
+        /* Código adaptado de: https://www.codingnepalweb.com/language-translator-app-html-css-javascript/ */
+
+        toText = document.querySelector(".to-text");
+        var cor = document.getElementById('color').value;
+        traduzirDe = 'Portuguese',
+        traduzirPara = 'English';
+        if(!cor) return alert("Digite")
+        let apiUrl = `https://api.mymemory.translated.net/get?q=${cor}&langpair=${traduzirDe}|${traduzirPara}`;
+        fetch(apiUrl).then(res => res.json()).then(data => {
+            toText.value = data.responseData.translatedText;
+            data.matches.forEach(data => {
+                if(data.id === 0) {
+                    toText.value = data.translation;
+                }
+            });
+
+            var body = window.document.body;
+            body.style.background = toText.value;
+            console.log(toText.value);
+            toText.innerText = `Antes: ${cor}, Depois: ${toText.value}`;  
+            var p1 = document.getElementsByTagName('p')[0];
+            p1.innerText = toText.value;          
+        });
+    });
+            /* Explicação: Ele pega a cor que você digitou em português, passa para inglês e coloca como plano de fundo */
+    </script>
+    <center>
+        <a href="eventos.html">
+        <button> Eventos</button>
+    </a>
+       <h1 class="to-text"> Traduzido </h1>
+    </center>
+</body>
+</html>
