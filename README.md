@@ -9,6 +9,9 @@ Dentre eles:
 >- MyMemory API (Para tradução);
 >- Criatividade.
 
+## Teste o site
+Teste o site em: https://palmirinhadev.github.io/praticas-javascript/
+
 ## Autor
 Eu, 2022.
 
