@@ -10,7 +10,7 @@ Dentre eles:
 >- Criatividade.
 
 ## Teste o site
-Teste o site em: https://palmirinhadev.github.io/praticas-javascript/
+Teste o site em: https://kaique-nascimento.github.io/praticas-javascript/
 
 ## Autor
 Eu, 2022.
